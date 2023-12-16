@@ -1,31 +1,7 @@
 
-// const { Builder, By, Key, until } = require('selenium-webdriver');
-// const { SelectiumBuilder, Selectors } = require('selectium');
-
-// (async () => {
-//     const driver = new Builder().forBrowser('chrome').build();
-//     const selectiumDriver = new SelectiumBuilder().forDriver(driver).build();
-//     const currentTab = window.location.href;
-//     try {
-//         await driver.get(currentTab);
-
-//         // Use Selectium to find element by name attribute
-//         const element = await selectiumDriver.findElement(Selectors.name('first_name'));
-
-//         // Perform actions on the element (e.g., click)
-//         await element.click();
-
-//         // Other actions...
-
-//     } finally {
-//         await driver.quit();
-//     }
-// })();
-
 
 
 class AutoFillFormat {
-
 
 
     constructor() {
@@ -39,10 +15,22 @@ class AutoFillFormat {
                 this.fillForm();
             }
             console.log(request);
+
+            if (request.action == "find_job_description") {
+                this.findJobDescription();
+            }
         })
     }
 
-    fillForm() {
+    async findJobDescription() {
+        console.log("In find job description page in index js")
+        const jobDescription = document.querySelectorAll('[data-testid]')
+        console.log(jobDescription);
+
+    }
+
+
+    async fillForm() {
         const form = { firstname: "kevin", lastname: "king", phone: "5419087690" };
 
         const firstname = document.getElementById("input-3");
